@@ -3,7 +3,7 @@ import Fastify from 'fastify';
 import dotenv from 'dotenv';
 import { AppDataSource } from './ormconfig';
 import { userController } from './controllers/UserController';
-
+import messageController from './controllers/MessageController';
 
 dotenv.config();
 
@@ -14,8 +14,8 @@ AppDataSource.initialize()
     console.log('Data Source has been initialized!');
 
     userController(server);
+    server.register(messageController);
 
-    // Запустіть сервер
     server.listen({ port: 3000 }, (err, address) => {
       if (err) {
         console.error(err);
