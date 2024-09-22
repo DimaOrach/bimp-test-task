@@ -14,7 +14,7 @@ AppDataSource.initialize()
     console.log('Data Source has been initialized!');
 
     userController(server);
-    server.register(messageController);
+    messageController(server);
 
     server.listen({ port: 3000 }, (err, address) => {
       if (err) {
