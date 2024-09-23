@@ -4,10 +4,18 @@ import dotenv from 'dotenv';
 import { AppDataSource } from './ormconfig';
 import { userController } from './controllers/UserController';
 import messageController from './controllers/MessageController';
+import fastifyMultipart, { MultipartFile } from '@fastify/multipart';
 
 dotenv.config();
 
+declare module 'fastify' {
+  interface FastifyRequest {
+    file: () => Promise<MultipartFile>;
+  }
+}
+
 const server = Fastify();
+server.register(fastifyMultipart);
 
 AppDataSource.initialize()
   .then(() => {

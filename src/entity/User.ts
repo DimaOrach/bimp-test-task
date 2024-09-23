@@ -10,4 +10,7 @@ export class User {
 
   @Column({ type: 'varchar' }) 
   passwordHash!: string;
+
+  @Column({ type: 'varchar', nullable: true })
+  filePath!: string; // Переконайся, що тип є рядком
 }
