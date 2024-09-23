@@ -8,12 +8,6 @@ import fastifyMultipart, { MultipartFile } from '@fastify/multipart';
 
 dotenv.config();
 
-declare module 'fastify' {
-  interface FastifyRequest {
-    file: () => Promise<MultipartFile>;
-  }
-}
-
 const server = Fastify();
 server.register(fastifyMultipart);
 
